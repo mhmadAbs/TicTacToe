@@ -29,14 +29,14 @@ class Human(Player):
         self.name = name
 
     def play(self, board):
-        place = "xx"
+        place = ""
         while place != " ":  # so that the while loop can start.
             user_str = input("{} ,Choose a Position [1..9] : ".format(self.getName()))
             if user_str.isdigit():
                 user_int = int(user_str)
             else:
                 raise ValueError("Non-valid TicTacToe Position")
-            place = board[user_int - 1]
+            place = board[user_int - 1] # Positions in the Game starts from 1
             if place != " ":
                 print("Position {} is full".format(user_int))
             else:
@@ -135,7 +135,6 @@ class Game:
                 if this_board.checkResult():
                     winner = this_ai.getName()
                     break
-            print(this_board.getListe())
         if winner == "":
             print("Draw ! Nobody won !")
         else:
